@@ -1,0 +1,2505 @@
+/* Assure que le body et html occupent toute la hauteur de la fenêtre */
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Kaisei Opti";
+}
+/* Contenu principal */
+section {
+  flex: 1; /* Permet au contenu principal de prendre tout l'espace disponible */
+  text-align: center;
+}
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.separator-line {
+  border: none; /* Retire les bordures par défaut */
+  border-top: 2px solid #ddd; /* Crée une ligne de 2px */
+  margin: 20px 0; /* Ajoute de l'espace au-dessus et au-dessous */
+  width: 80%; /* Largeur de la ligne */
+  margin-left: auto; /* Centre la ligne */
+  margin-right: auto; /* Centre la ligne */
+  opacity: 0.7; /* Légère transparence */
+}
+/*DEBUT*******************************************************************************************/
+/* Header */
+.header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Promo Bar */
+.promo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffeb3b;
+  padding: 10px 0;
+  font-size: 14px;
+  position: relative;
+  font-family: "Lobster Two", sans-serif;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 100px; /* Hauteur maximum pour l'animation */
+  opacity: 1;
+  overflow: hidden; /* Cache le contenu en dehors de la hauteur maximale */
+  white-space: nowrap;
+}
+.promo.hide {
+  max-height: 0; /* Cache la barre de promotion */
+  opacity: 0; /* Rend transparent */
+}
+.promo .fermer1 {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+  color: #fff;
+}
+/* Animation for sliding text */
+.promo span {
+  display: inline-block;
+  position: absolute;
+  opacity: 0;
+  animation: slide 8s infinite;
+}
+
+.promo span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.promo span:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.promo span:nth-child(3) {
+  animation-delay: 4s;
+}
+
+.promo span:nth-child(4) {
+  animation-delay: 6s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10%,
+  30% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  40%,
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: coral;
+  position: relative;
+  transition: padding 0.3s ease, background 0.3s ease;
+}
+/* Style de la barre de navigation lorsqu'elle est réduite après le défilement */
+.nav.shrink {
+  padding: 5px 10px; /* Réduit la taille du padding */
+  background: #ff7f50; /* Rend la barre légèrement transparente */
+  position: fixed;
+  /* La rend fixe en haut de l'écran */
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ajoute une ombre subtile */
+  z-index: 1000;
+}
+/* Desktop Navigation */
+.desktop-nav {
+  display: flex;
+  gap: 20px; /* Space between nav items */
+}
+/* Mobile Navigation */
+.mobile-nav {
+  display: none;
+  /* Hide on desktop */
+}
+
+.nav-link.active {
+    text-decoration: underline;
+    font-weight: bold; /* Optionnel : pour plus de visibilité */
+}
+
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%; /* Adjusted to not occupy the full screen */
+  height: 100%;
+  background: coral;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  z-index: 1000;
+  text-align: center;
+  /* Center logo horizontally within its container */
+  transition: left 0.5s ease;
+}
+.menu.show {
+  left: 0; /* Fait apparaître le menu depuis la gauche */
+}
+.menu-top {
+  display: flex;
+  justify-content: flex-end;
+}
+.fermer {
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  color: white;
+}
+.menu-categories {
+  display: flex;
+  justify-content: space-between;
+  left: 50%; /* Centrer le logo horizontalement */
+  transform: translateX(20%);
+}
+.menu-side,
+.categories-side {
+  width: 45%;
+}
+.menu1 i {
+  cursor: pointer;
+  font-size: 20px;
+}
+.nav_list {
+  list-style: none;
+  /* Remove default bullet points */
+  margin: 0;
+  padding: 0;
+}
+.nav_list li {
+  margin: 12px 0; /* Space between the boxes */
+}
+.nav-link {
+  color: #fff; /* Text color */
+  text-decoration: none; /* Remove default underline */
+  font-size: 18px;
+  padding: 10px 15px; /* Padding inside each item */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+/* Hover Effect */
+.nav-link:hover {
+  color: blue; /* Change text color on hover */
+  transform: scale(1.1);
+  /* Agrandit légèrement au survol */
+}
+.recherche {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.recherche input {
+  flex: 1;
+  padding: 8px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+}
+.recherche i {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+/* Stylisation du catalogue */
+#catalogue {
+    display: none; /* Cache le catalogue initialement */
+    margin-top: 20px;
+    max-width: 500px; /* Alignement avec la barre de recherche */
+    list-style: none; /* Supprime les puces de liste */
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour les éléments de la liste */
+#catalogue li {
+    padding: 15px 20px;
+    margin: 10px 0; /* Espacement entre les cases */
+    border: 1px solid #d500f9; /* Bordure légère autour de chaque case */
+    border-radius: 8px; /* Coins arrondis pour un effet de boîte */
+    background-color: #d500f9; /* Couleur de fond par défaut */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transition pour l'effet au survol */
+    list-style: none; /* Assure qu'il n'y a pas de puces */
+}
+
+/* Effet au survol pour les éléments */
+#catalogue li:hover {
+    background-color: #c51162; /* Change la couleur de fond au survol */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour un effet de survol */
+}
+
+/* Pour les liens dans les éléments de la liste */
+#catalogue li a {
+    text-decoration: none; /* Supprime les soulignements des liens */
+    color: white; /* Couleur du texte des liens */
+    display: block; /* Pour que tout le lien soit cliquable */
+}
+
+/* Si tu veux des couleurs alternées */
+#catalogue li:nth-child(odd) {
+    background-color: #d500f9; /* Couleur pour les éléments impairs */
+}
+
+#catalogue li:nth-child(even) {
+    background-color: #9c27b0; /* Couleur pour les éléments pairs */
+}
+
+
+
+
+/*logom*/
+/* Style général pour le logo */
+.logo-item {
+  list-style: none; /* Enlève les puces du <li> */
+  text-align: center; /* Centre le texte à l'intérieur du <li> */
+}
+
+/* Style pour l'élément <a> */
+.logo-link {
+  cursor: pointer;
+  font-family: "Lobster Two", cursive;
+  font-size: 24px; /* Taille de la police pour l'élément <a> */
+  color: #ffeb3b; /* Couleur jaune */
+  text-decoration: none; /* Enlève la sous-ligne */
+  letter-spacing: 1.5px; /* Espace entre les lettres */
+  display: block; /* Affiche le lien comme un bloc */
+  transition: transform 0.3s ease, color 0.3s ease; /* Transitions pour hover */
+}
+
+/* Style pour l'effet hover */
+.logo-link:hover {
+  transform: scale(1.1); /* Agrandit légèrement au survol */
+  color: #ff9800; /* Change la couleur au survol */
+}
+
+/* Style pour la première partie du logo (Kalysee's) */
+.logom {
+  cursor: pointer;
+  font-size: 25px; /* Taille plus grande pour "Kalysee's" */
+  font-weight: bold; /* Gras pour distinction */
+  color: #ff5722; /* Couleur spécifique pour "Kalysee's" */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
+/* Style pour la deuxième partie du logo (shop) */
+.logo-link br + span {
+  font-size: 15px; /* Taille plus petite pour "shop" */
+  color: #fff; /* Couleur blanche pour "shop" */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style général pour le logo */
+/* Style pour l'élément <a> */
+.logo a {
+  font-family: "Lobster Two", cursive;
+  text-align: center;
+  font-size: 24px; /* Augmentation de la taille de police pour plus de visibilité */
+  color: #ffeb3b; /* Couleur jaune pour plus de contraste sur fond sombre */
+  text-decoration: none; /* Enlève la sous-ligne */
+  letter-spacing: 1.5px; /* Espace entre les lettres pour plus de lisibilité */
+  display: block;
+  transition: transform 0.3s ease, color 0.3s ease; /* Transition douce pour hover */
+}
+/* Style pour l'effet hover */
+.logo a:hover {
+  transform: scale(1.1); /* Augmente légèrement la taille au survol */
+  color: #ff9800; /* Change la couleur au survol pour attirer l'attention */
+}
+/* Style pour la première partie du logo */
+.logo .logo1 {
+  font-size: 25px; /* Taille plus grande pour "Kalysee's" */
+  font-weight: bold;
+  color: #ff5722; /* Couleur différente pour le texte principal */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère pour donner de la profondeur */
+}
+/* Style pour la deuxième partie du logo */
+.logo a br + span {
+  font-size: 15px; /* Taille plus petite pour "shop" */
+  color: #fff; /* Couleur blanche pour "shop" */
+}
+/* Style général pour l'icon menu */
+.icon1 a {
+  text-align: center;
+  font-size: 24px; /* Augmentation de la taille de police pour plus de visibilité */
+  color: white; /* Couleur jaune pour plus de contraste sur fond sombre */
+  text-decoration: none; /* Enlève la sous-ligne */
+  letter-spacing: 1.5px; /* Espace entre les lettres pour plus de lisibilité */
+  display: block;
+  transition: transform 0.3s ease, color 0.3s ease; /* Transition douce pour hover */
+}
+/* Style pour l'effet hover */
+.icon1 a:hover {
+  transform: scale(1.1); /* Augmente légèrement la taille au survol */
+  color: #ff9800; /* Change la couleur au survol pour attirer l'attention */
+}
+/* Style pour la première partie du logo */
+.icon1 .menu1 {
+  font-size: 25px; /* Taille plus grande pour "Kalysee's" */
+  font-weight: bold;
+  color: white; /* Couleur différente pour le texte principal */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère pour donner de la profondeur */
+}
+.icon1,
+.logo,
+.icons,
+.heart-icon {
+  cursor: pointer;
+}
+.icons  {
+  display: flex; /* Utilise Flexbox pour disposer les icônes */
+  gap: 15px; /* Espace entre chaque icône */
+  align-items: center; /* Centre verticalement les icônes */
+  justify-content: center; /* Centre horizontalement les icônes */
+  padding: 10px 0; /* Ajoute un peu d'espace autour des icônes */
+}
+.icons div  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Largeur des conteneurs d'icônes */
+  height: 40px;
+  /* Hauteur des conteneurs d'icônes */
+  border-radius: 50%; /* Rend les conteneurs circulaires */
+  background-color: #f0f0f0;
+  /* Couleur de fond des conteneurs */
+  transition: background-color 0.3s, transform 0.3s;
+  /* Ajoute une transition pour l'interaction */
+}
+.icons div:hover {
+  background-color: #ddd; /* Change la couleur de fond au survol */
+  transform: scale(1.1); /* Agrandit légèrement au survol */
+}
+.icons i {
+  font-size: 20px;
+  /* Taille des icônes */
+  color: #333; /* Couleur des icônes */
+  transition: color 0.3s; /* Transition pour la couleur des icônes */
+}
+.icons div:hover i {
+  color: #007bff; /* Change la couleur de l'icône au survol */
+}
+/*heart*/
+.heart-icon  {
+  display: flex; /* Utilise Flexbox pour disposer les icônes */
+  gap: 15px; /* Espace entre chaque icône */
+  align-items: center; /* Centre verticalement les icônes */
+  justify-content: center; /* Centre horizontalement les icônes */
+  padding: 10px 0; /* Ajoute un peu d'espace autour des icônes */
+}
+.heart-icon div  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Largeur des conteneurs d'icônes */
+  height: 40px;
+  /* Hauteur des conteneurs d'icônes */
+  border-radius: 50%; /* Rend les conteneurs circulaires */
+  background-color: #f0f0f0;
+  /* Couleur de fond des conteneurs */
+  transition: background-color 0.3s, transform 0.3s;
+  /* Ajoute une transition pour l'interaction */
+}
+.heart-icon div:hover {
+  background-color: #ddd; /* Change la couleur de fond au survol */
+  transform: scale(1.1); /* Agrandit légèrement au survol */
+}
+.heart-icon i {
+  font-size: 20px;
+  /* Taille des icônes */
+  color: #333; /* Couleur des icônes */
+  transition: color 0.3s; /* Transition pour la couleur des icônes */
+}
+.heart-icon div:hover i {
+  color: #007bff; /* Change la couleur de l'icône au survol */
+}
+
+
+
+
+
+
+
+
+
+
+/*PANIER//////////////////////////////////////////////////////////*/
+/* Icône du panier */
+#cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#cart-icon:hover {
+    transform: scale(1.1);
+}
+
+#cart-icon i {
+    font-size: 24px; /* Ajustez la taille de l'icône */
+    color: #fff;
+    background: linear-gradient(45deg, #ff6f61, #d500f9); /* Dégradé de couleurs vives */
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+#cart-icon:hover i {
+    background: linear-gradient(45deg, #d500f9, #ff6f61); /* Inverser le dégradé au survol */
+}
+
+#cart-count {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    background: #ff1744; /* Couleur vive pour attirer l'attention */
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Ombre légère */
+}
+
+/* Menu du panier */
+.cart-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Caché par défaut */
+    width: 300px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3); /* Ombre plus marquée */
+    border-left: 2px solid #ff6f61; /* Bordure colorée */
+    transition: right 0.5s ease-in-out; /* Animation plus douce */
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1000; /* Assurez-vous que le panier est au-dessus des autres éléments */
+}
+
+.cart-menu.active {
+    right: 0; /* Affiche le panier */
+}
+
+/* Titre du panier */
+.cart-menu h2 {
+    color: #ff6f61; /* Couleur du titre */
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff6f61; /* Ligne sous le titre */
+    padding-bottom: 10px;
+}
+
+/* Articles du panier */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee; /* Ligne de séparation */
+    padding-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item:hover {
+    background-color: #f9f9f9; /* Changement de couleur au survol */
+}
+
+/* Image du produit */
+.cart-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
+/* Nom et prix du produit */
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-size: 16px;
+    color: #333;
+}
+
+.cart-item-price {
+    font-size: 14px;
+    color: #ff6f61; /* Couleur du prix */
+    font-weight: bold;
+}
+
+/* Bouton de suppression */
+.cart-item button {
+    background: #ff1744; /* Couleur du bouton */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.cart-item button:hover {
+    background: #d500f9; /* Changement de couleur au survol */
+}
+
+/* Total du panier */
+.cart-total {
+    margin-top: 20px;
+    font-weight: bold;
+    border-top: 1px solid #eee; /* Ligne au-dessus du total */
+    padding-top: 10px;
+}
+
+/* Bouton de commande */
+.cart-total button {
+    background: #00e676; /* Couleur du bouton de commande */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.cart-total button:hover {
+    background: #00c853; /* Changement de couleur au survol */
+}
+.fermer-p{
+  font-size: 20px;
+  color: orangered;
+  cursor: pointer;
+}
+.fermer-p:hover{
+  color: #d500f9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Repositionne le logo pour prendre la place du menu sur les écrans larges */
+@media (min-width: 769px) {
+  .logo {
+    display: none;
+  }
+  .mobile-nav {
+    display: none; /* Cacher le "MENU" sur les écrans larges */
+  }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-categories {
+    flex-direction: column;
+  }
+  .desktop-nav {
+    display: none; /* Hide desktop nav on mobile */
+  }
+  .mobile-nav {
+    display: block; /* Show hamburger menu on mobile */
+  }
+  .menu-categories {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .menu {
+    width: 70%; /* Slightly wider on mobile */
+  }
+  .nav_list li {
+    border-bottom: 1.5px solid whitesmoke; /* Ligne séparatrice de couleur gris foncé */
+  }
+  .logo {
+    position: absolute;
+    left: 50%; /* Centrer le logo horizontalement */
+    transform: translateX(-50%); /* Ajuster pour garder le logo centré */
+  }
+  .heart-icon {
+    display: none; /* Cache la div contenant l'icône de cœur */
+}
+
+}
+/* Carrousel****************************************************************************************************** */
+
+.carousel {
+  position: relative;
+  top: 20px;
+  width: 100%;
+  max-width: 1200px;
+  height: 90%;
+  /* Ajuste selon tes besoins */
+  margin: 0 auto;
+  overflow: hidden;
+  border-bottom: 2px;
+  border-radius: 10px;
+}
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+}
+.carousel-item {
+  flex: 0 0 100%;
+  position: relative;
+}
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+}
+.carousel-caption {
+  position: absolute; /* Pour positionner sur l'image du carousel */
+  margin: 0 auto;
+  bottom: 70px;
+  /* Distance depuis le bas de l'image */
+  left: 20px; /* Distance depuis la gauche de l'image */
+  padding: 20px 0;
+
+  max-width: 500px; /* Largeur maximale pour ne pas trop occuper l'image */
+  color: #fff;
+  /* Effet de flou en arrière-plan */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transitions pour effet de survol */
+  opacity: 0; /* Début invisible pour animation */
+  transform: translateY(50px); /* Position de départ pour animation */
+}
+.carousel-caption h3 {
+  font-size: 35px;
+  text-align: center;
+  font-family: "Lobster Two", sans-serif;
+}
+.carousel-caption p {
+  font-size: 27px;
+  text-align: center;
+  font-family: "Lobster Two", sans-serif;
+  font-weight: bold;
+  bottom: 20px;
+}
+#voir-plus {
+  padding: 12px 24px; /* Espacement interne pour le texte */
+  font-size: 14px; /* Taille du texte */
+  font-weight: bold;
+  color: #ffffff; /* Couleur du texte */
+  background-color: orangered; /* Couleur de fond */
+  border: none; /* Retire la bordure par défaut */
+  border-radius: 8px; /* Coins arrondis */
+  cursor: pointer; /* Pointeur de souris pour l'interactivité */
+  transition: background-color 1s ease, transform 1s ease; /* Transitions pour les effets */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour effet de relief */
+  outline: none; /* Retire le contour lors du clic */
+  margin: 10px;
+  align-items: center;
+}
+
+#voir-plus:hover {
+  background-color: orange; /* Couleur de fond lors du survol */
+  transform: translateY(-2px); /* Légère élévation lors du survol */
+}
+
+#voir-plus:active {
+  background-color: yellow; /* Couleur de fond lors du clic */
+  transform: translateY(0); /* Revenir à la position initiale */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Réduit l'ombre lors du clic */
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 5s forwards;
+}
+.fade-in:nth-child(1) {
+  animation-delay: 0.2s; /* Le h3 apparaît en premier */
+}
+.fade-in:nth-child(2) {
+  animation-delay: 0.8s; /* Le p apparaît ensuite */
+}
+.fade-in:nth-child(3) {
+  animation-delay: 1.5s;
+  /* Le bouton apparaît en dernier */
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+.carousel-caption.show {
+  opacity: 1; /* Visible */
+  transform: translateY(0);
+  /* Retourne à sa place initiale */
+}
+/* Pour afficher avec animation, ajouter la classe .show avec JavaScript ou par animation CSS */
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+}
+.carousel-control-prev {
+  left: 10px;
+}
+.carousel-control-next {
+  right: 10px;
+}
+/* Ajustements spécifiques pour les écrans plus larges */
+
+@media (min-width: 781px) {
+  .carousel {
+    margin: 0 auto;
+    width: 100%;
+    height: 80%;
+  }
+  .carousel-caption {
+    margin: 0 auto;
+    bottom: 450px;
+    left: 20px;
+  }
+  .carousel-caption h3 {
+    font-size: 50px;
+  }
+  .carousel-caption p {
+    font-size: 38px;
+  }
+  #voir-plus {
+    padding: 16px 32px;
+    font-size: 22px;
+  }
+}
+/* Media Query pour les écrans entre 781px et 1110px */
+@media (min-width: 781px) and (max-width: 1110px) {
+  .carousel-caption {
+    margin: 0 auto;
+    bottom: 200px; /* Ajuste pour que la légende soit visible */
+    left: 10px;
+    max-width: 90%; /* Réduit la largeur pour mieux s'adapter */
+    opacity: 1; /* Assure que la légende est visible */
+    transform: translateY(0); /* Retourne à sa place initiale */
+  }
+  .carousel-caption h3 {
+    font-size: 50px; /* Ajuste la taille pour qu'elle s'adapte à l'écran */
+  }
+  .carousel-caption p {
+    font-size: 40px; /* Ajuste la taille pour qu'elle s'adapte à l'écran */
+  }
+  #voir-plus {
+    padding: 10px 20px; /* Ajuste le padding pour les petits écrans */
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 781px) {
+  .carousel {
+    width: 100%;
+    height: 70%;
+  }
+}
+/*SECTION PRODUITS**********************************************************************************************/
+/* Style global pour la section */
+.produit-categories {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.categories-description h5 {
+  font-size: 18px;
+  color: #ff6347;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.categories-description h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 10px;
+  font-family: "Lobster Two", sans-serif;
+}
+
+.categories-description p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Style des produits */
+.produits {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+/* Style des items des produits */
+.produit-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.produit-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Image du produit */
+.produit-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 620px) {
+  .produit-img img {
+    width: 100%; /* Assure que l'image prend toute la largeur de son conteneur */
+    height: auto; /* Maintient le ratio d'aspect de l'image */
+    max-height: 500px; /* Ajuste cette valeur pour limiter la hauteur maximale */
+    object-fit: cover; /* Recadre l'image pour remplir l'espace tout en conservant son aspect */
+  }
+
+  .produit-item {
+    flex-direction: column; /* Assure que l'image et la description ne soient pas trop serrées */
+  }
+
+  .produit-des {
+    padding: 10px; /* Pour éviter que le texte ne semble trop grand par rapport à l'image */
+  }
+
+  .produit-list li {
+    font-size: 14px; /* Ajuste la taille du texte pour équilibrer avec l'image */
+  }
+}
+
+/* Description du produit */
+.produit-des {
+  padding: 15px;
+}
+
+.produit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.produit-list li {
+  margin-bottom: 8px;
+}
+
+.produit-list li:first-of-type a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease;
+}
+.produit-list li:nth-of-type a {
+  text-decoration: none;
+  font-size: 1px;
+  font-weight: bold;
+  color: grey;
+  transition: color 0.3s ease;
+}
+.produit-list a:hover {
+  color: #ff6347;
+}
+
+.produit-list p {
+  font-size: 16px;
+  color: #ff6347;
+}
+
+.produit-list s {
+  color: #aaa;
+  margin-right: 10px;
+}
+
+/* Styles spécifiques pour les écrans de PC */
+@media (min-width: 992px) {
+  .produits {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+
+  .categories-description {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .categories-description h2 {
+    font-size: 48px;
+  }
+}
+/* Affichage côte à côte 2 par 2 sur mobile */
+@media (max-width: 991px) {
+  .produits {
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+    gap: 15px; /* Espacement entre les éléments */
+  }
+
+  .produit-item {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+/*SECTION ARTICLES*******************************************************************************************/
+/* Section principale */
+/* Styles pour la section Produits Phare */
+.produit-phare {
+  padding: 20px;
+  text-align: center; /* Centrer le texte */
+  background-color: #f9f9f9; /* Arrière-plan léger */
+}
+
+.phare-description h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.phare-description p {
+  font-size: 18px;
+  color: #666; /* Texte gris doux */
+  margin-bottom: 30px;
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px; /* Espacement entre les articles */
+}
+
+.article-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrer les éléments à l'intérieur */
+}
+
+.article-img img {
+  width: 100%;
+  height: 200px; /* Hauteur fixe pour les images carrées */
+  object-fit: cover; /* Assurer que l'image remplit le cadre sans déformation */
+  border-radius: 8px; /* Coins légèrement arrondis */
+  transition: transform 0.3s ease; /* Effet de zoom au survol */
+}
+
+.article-item:hover .article-img img {
+  transform: scale(1.05); /* Zoom léger au survol */
+}
+
+.article-des {
+  margin-top: 10px; /* Espacement entre l'image et la description */
+}
+
+.article-list {
+  list-style: none; /* Supprimer les puces de liste */
+  padding: 0;
+  text-align: center; /* Centrer le texte */
+}
+
+.article-list li {
+  margin: 5px 0; /* Espacement entre les éléments de la liste */
+}
+
+.article-list li:first-of-type a {
+  text-decoration: none; /* Supprimer la décoration des liens */
+  color: #333; /* Couleur du texte */
+  font-weight: bold;
+  transition: color 0.3s; /* Transition pour la couleur */
+}
+.article-list li:nth-of-type(2) a {
+  font-size: 13px;
+  text-decoration: none; /* Supprimer la décoration des liens */
+  color: grey; /* Couleur du texte */
+  transition: color 0.3s; /* Transition pour la couleur */
+}
+
+.article-list a:hover {
+  color: orangered; /* Couleur au survol */
+}
+
+.article-list s {
+  font-size: 16px;
+  color: #999; /* Couleur pour les prix barrés */
+}
+.article-list p {
+  font-size: 16px;
+  color: orangered; /* Couleur pour les prix barrés */
+}
+/* Style de la boîte modale sur les images */
+.modal-produits {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.6); /* Légère opacité de fond */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.article-item {
+  position: relative; /* Nécessaire pour le positionnement absolu de .modal-produits */
+  overflow: hidden; /* Assure que le contenu déborde pas */
+}
+
+/* Afficher la boîte modale au survol */
+.article-item:hover .modal-produits {
+  opacity: 1;
+}
+
+.article-item .modal-produits div {
+  color: #fff; /* Couleur des icônes */
+  font-size: 20px; /* Taille des icônes */
+  cursor: pointer; /* Changer le curseur au survol */
+  transition: transform 0.3s ease;
+}
+
+/* Animation des icônes au survol */
+.article-item .modal-produits div:hover {
+  transform: scale(1.2); /* Agrandir légèrement les icônes */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER****************************************************************************************************** */
+/* Style général du footer */
+footer {
+  background-color: #333; /* Fond sombre pour contraste */
+  color: #fff; /* Texte blanc pour lisibilité */
+  padding: 20px 0; /* Espacement intérieur */
+  font-family: "Kaisei Opti";
+  border-top: 4px solid #ff9800; /* Bordure orange pour la séparation */
+  align-items: center;
+  text-align: center;
+  top: 20px;
+}
+/* Contenu du footer */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* Style pour les sections du footer */
+.footer-center {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+/* Style pour la section logo */
+.footer-center .logo2 a {
+  font-family: "Lobster Two", cursive;
+  text-align: center;
+  font-size: 24px; /* Augmentation de la taille de police pour plus de visibilité */
+  color: #ffeb3b; /* Couleur jaune pour plus de contraste sur fond sombre */
+  text-decoration: none; /* Enlève la sous-ligne */
+  letter-spacing: 1.5px;
+  /* Espace entre les lettres pour plus de lisibilité */
+  display: block;
+  transition: transform 0.3s ease, color 0.3s ease; /* Transition douce pour hover */
+}
+/* Style pour l'effet hover */
+.logo2 a:hover {
+  transform: scale(1.1);
+  /* Augmente légèrement la taille au survol */
+  color: #ff9800; /* Change la couleur au survol pour attirer l'attention */
+}
+/* Style pour la première partie du logo */
+.logo2 .logo3 {
+  font-size: 25px;
+  /* Taille plus grande pour "Kalysee's" */
+  font-weight: bold;
+  color: #ff5722; /* Couleur différente pour le texte principal */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère pour donner de la profondeur */
+}
+/* Style pour la deuxième partie du logo */
+.logo2 a br + span {
+  font-size: 15px;
+  /* Taille plus petite pour "shop" */
+  color: #fff; /* Couleur blanche pour "shop" */
+}
+.footer-center h3 {
+  font-size: 18px;
+  /* Taille de police pour les titres */
+  color: #ffeb3b; /* Couleur jaune pour les titres */
+  margin-bottom: 15px;
+  /* Espacement sous les titres */
+}
+.footer-center a.footer-link {
+  display: block;
+  color: #fff; /* Couleur des liens */
+  text-decoration: none;
+  /* Enlève la sous-ligne */
+  margin: 5px 0; /* Espacement entre les liens */
+  font-size: 16px;
+  /* Taille de police des liens */
+}
+.footer-center a.footer-link:hover {
+  color: #ff9800; /* Couleur des liens au survol */
+  text-decoration: underline; /* Souligné au survol */
+}
+/* Style pour les informations de contact */
+.footer-center div {
+  margin-bottom: 10px;
+}
+.footer-center i {
+  margin-right: 8px; /* Espacement entre l'icône et le texte */
+  color: #ffeb3b; /* Couleur des icônes */
+}
+/* Style pour la section copyright */
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px; /* Taille de police pour le copyright */
+  color: #fff; /* Couleur du texte */
+}
+.copyright a {
+  color: #ff9800; /* Couleur du lien dans le copyright */
+  text-decoration: none; /* Enlève la sous-ligne */
+}
+.copyright a:hover {
+  text-decoration: underline; /* Souligné au survol */
+}
+/* Styles spécifiques pour les grands écrans */
+@media (min-width: 769px) {
+  .footer-content {
+    flex-direction: row; /* Assure la disposition en ligne pour les grands écrans */
+    align-items: flex-start; /* Aligne les éléments en haut */
+  }
+  .footer-center {
+    text-align: center;
+    /* Aligne le texte à gauche pour les grands écrans */
+    margin: 10px; /* Assure un espacement uniforme */
+  }
+}
+/*BOUTIQUE************************************************************************************************************/
+
+/* Contenu principal */
+.boutique {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: "Lobster Two", sans-serif;
+}
+.boutique h1 {
+  font-family: "lobster two", sans-serif;
+  color: orangered;
+  margin: 10px;
+}
+
+.boutique-img-container {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  height: 70vh; /* Ajuste pour 70-80% de hauteur */
+  overflow: hidden;
+}
+
+.boutique-img {
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Ajoute une transition pour la taille et la luminosité */
+}
+
+.boutique-img:hover {
+  transform: scale(1.1); /* Agrandit l'image à 110% de sa taille originale */
+  filter: brightness(1.2); /* Rend l'image 20% plus claire */
+}
+
+.boutique-overlay {
+  font-size: 100px;
+  position: absolute;
+  bottom: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  padding: 10px 0;
+  transition: transform 0.3s ease-in-out;
+  font-weight: bold;
+}
+
+/* Affiche toujours sur PC */
+.boutique-overlay div {
+  display: none;
+}
+
+/* Affichage des catégories sur PC */
+@media (min-width: 768px) {
+  .boutique-overlay div {
+    display: block;
+  }
+}
+/* Catégories sur mobile */
+.mobile-categories {
+  position: fixed;
+  width: 50%;
+  height: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-200%);
+  transition: transform 0.5s ease;
+  z-index: 1000;
+}
+
+.categories-btn {
+  position: absolute;
+  bottom: 200px;
+  padding: 10px 20px;
+  border: none;
+  background-color: rgba(255, 111, 97, 0.7);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.categories-btn:hover {
+  background-color: #ff3d30;
+}
+
+.p-list {
+  list-style: none; /* Retire les puces */
+  padding: 0; /* Retire le padding par défaut des listes */
+  margin: 0; /* Retire les marges par défaut */
+  font-size: 30px;
+}
+.p-list li:last-of-type a {
+  font-size: 16px;
+  color: gray;
+}
+.p-list li:first-of-type a:hover {
+  color: wheat;
+}
+
+.p-list li a {
+  text-decoration: none; /* Retire les soulignements des liens */
+  color: orangered; /* Assure que les liens soient blancs */
+  font-size: 25px; /* Ajuste la taille de la police selon ton design */
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Active state pour les catégories sur mobile */
+.mobile-categories.active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .boutique-overlay {
+    display: none;
+  }
+}
+@media (min-width: 769px) {
+  .categories-btn {
+    display: none;
+  }
+}
+/*Section filtres///////////////////////////////////////////////////////////////////////////////*/
+.filtres-boites {
+  display: flex;
+  border: 2px solid lightblue;
+  flex-direction: column;
+  margin: 20px;
+  border-radius: 8px;
+  max-width: 1500px; /* Ajustez selon vos besoins */
+  padding: 20px;
+}
+
+.modal-b {
+  display: flex;
+  flex-direction: column; /* Aligner en ligne */
+
+  /* Aligne les éléments aux extrémités du conteneur */
+  width: 100%; /* Prendre toute la largeur possible */
+}
+
+.filter-button {
+  display: none;
+  flex-direction: row;
+  background-color: coral; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Animation de zoom */
+  margin: 20px;
+  padding: 10px;
+}
+
+.filter-button i {
+  margin-right: 8px; /* Espace entre l'icône et le texte */
+  font-size: 20px;
+}
+
+.filter-button:hover {
+  transform: scale(1.1); /* Zoom lors du survol */
+  background-color: orangered; /* Couleur de fond au survol */
+}
+
+.variable {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* Aligne les éléments à gauche */
+}
+.header-b {
+  /* Aligne les éléments à gauche et à droite */
+  width: 100%;
+  margin: 0px; /* Espacement sous l'en-tête */
+}
+
+.close-b {
+  padding: 8px 12px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 0;
+}
+
+.close-b:hover {
+  background-color: #ff1a1a;
+}
+
+.filters-list {
+  border-radius: 8px;
+  list-style: none;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0;
+  margin-right: 0; /* Assure qu'il n'y a pas d'espace non désiré à droite */
+  gap: 10px;
+}
+
+/*FILTRES-PRODUITS***************************************************************************************/
+/* Section principale pour les filtres et les produits */
+.Filtres-produits {
+  display: flex;
+   /* Permet aux éléments de passer à la ligne si nécessaire */
+  gap: 20px; /* Espacement entre les filtres et les produits */
+  padding: 20px;
+  width: 100%; /* S'adapte à la largeur de l'écran */
+  max-width: 1300px; /* Garde une largeur maximale */
+  margin: auto; /* Centre la section */
+}
+
+/* Media queries pour les écrans plus petits */
+@media (max-width: 768px) {
+  .Filtres-produits {
+    flex-direction: column; /* Empile les éléments en colonne pour les écrans plus petits */
+    gap: 10px; /* Réduit l'espacement entre les éléments */
+  }
+}
+
+/* Bouton Fermer pour le menu des filtres */
+.close-menu {
+  display: none;
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: right; /* Pour aligner le bouton à droite */
+}
+
+.close-menu:hover {
+  background-color: #ff1a1a;
+}
+
+/* Section des filtres */
+.filtres {
+  width: 1000px;
+  background-color: #ffffff; /* Couleur de fond plus blanche pour un contraste plus net */
+  border: 1px solid #e0e0e0; /* Bordure plus claire */
+  border-radius: 12px; /* Coins plus arrondis */
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Ombre plus douce */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition pour l'animation */
+  position: sticky;
+  top: 80px; /* Ajuste cette valeur selon la hauteur de ta barre de navigation */
+  z-index: 1; /* Assure-toi que le z-index est plus bas que celui de la barre de navigation */
+}
+
+.filtres:hover {
+  transform: translateY(-5px); /* Léger déplacement vers le haut au survol */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Ombre plus prononcée au survol */
+}
+
+/* Style pour les titres des sections de filtres */
+.filtres p {
+  font-size: 18px; /* Taille de police légèrement augmentée */
+  font-weight: 600; /* Poids de police plus audacieux */
+  color: orangered; /* Couleur de texte plus sombre pour un meilleur contraste */
+  margin-bottom: 15px;
+  font-family: "Lobster Two", sans-serif;
+  transition: color 0.3s ease; /* Animation de la couleur du texte */
+  font-size: 25px;
+}
+
+.filtres p:hover {
+  color: #ff5722; /* Couleur vive au survol */
+}
+
+/* Liste des filtres (couleurs, tailles, stock) */
+.filtres ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filtres li {
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 6px; /* Coins légèrement arrondis */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animation au survol */
+}
+
+.filtres li:hover {
+  background-color: #f1f1f1; /* Fond légèrement gris au survol */
+  transform: translateX(8px); /* Déplacement plus marqué au survol */
+}
+
+/* Style pour les cercles de couleur */
+.color-circle {
+  display: inline-block;
+  width: 18px; /* Légèrement plus grand pour une meilleure visibilité */
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 10px; /* Espacement augmenté pour une meilleure lisibilité */
+  vertical-align: middle;
+  border: 1px solid #d0d0d0; /* Bordure subtile autour des cercles de couleur */
+}
+
+/*PRODUITS////////////////////////////////////////////////////////////////////*/
+
+.produits-b {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacement entre les articles */
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1200px;
+}
+
+.produit-b {
+  flex: 1 1 calc(
+      50% - 20px
+    ); /* Chaque produit prend 50% de la largeur moins l'espacement */
+  display: block;
+  flex-direction: column;
+  align-items: center; /* Centre les éléments à l'intérieur */
+  text-align: center;
+}
+/* Ajustement de la disposition des éléments parents pour le positionnement relatif */
+.img-b {
+  position: relative; /* Nécessaire pour le positionnement de la boîte modale */
+  width: 90%;
+  height: 400px; /* Hauteur fixe pour les images */
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Transition pour la taille et la luminosité */
+}
+
+.img-b img {
+  width: 100%; /* L'image prend toute la largeur disponible */
+  height: 100%; /* Maintient les proportions de l'image */
+  border-radius: 8px; /* Arrondit légèrement les coins de l'image */
+  object-fit: cover; /* Couvre l'espace tout en conservant les proportions */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.img-b:hover {
+  transform: translateY(-5px); /* Léger déplacement vers le haut au survol */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Ombre plus prononcée au survol */
+}
+.img-b:hover img {
+  transform: scale(1.05); /* Effet de zoom */
+  filter: brightness(1.05); /* Augmentation de la luminosité */
+}
+
+.produit-b p {
+  margin-top: 10px; /* Supprime les marges autour du texte */
+  padding: 0; /* Supprime le padding pour réduire l'espace */
+  font-size: 14px;
+  /* Couleur du texte */
+  text-align: center;
+  align-items: center;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5); /* Ombre subtile */
+}
+
+
+
+
+
+/* Styles par défaut pour les écrans larges (PC) */
+.modal-produits-b {
+  position: absolute;
+  bottom: 10px; /* Positionne en bas de l'image */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  opacity: 0; /* Masquée par défaut */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.6); /* Légère opacité de fond */
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 10; /* Pour s'assurer qu'elle est au-dessus des autres éléments */
+}
+
+/* Afficher la boîte modale au survol sur les écrans de bureau */
+.produit-b:hover .modal-produits-b {
+  opacity: 1; /* Affiche la boîte modale au survol */
+  transform: translateX(-50%) translateY(-10px); /* Légère animation vers le haut */
+}
+
+.modal-produits-b div {
+  color: #fff; /* Couleur des icônes */
+  font-size: 20px; /* Taille des icônes */
+  cursor: pointer; /* Changer le curseur au survol */
+  transition: transform 0.3s ease;
+}
+
+/* Animation des icônes au survol */
+.modal-produits-b div:hover {
+  transform: scale(1.2); /* Agrandir légèrement les icônes */
+}
+
+/* Styles pour les appareils mobiles */
+@media (max-width: 768px) {
+  .modal-produits-b {
+    display: flex; /* Toujours visible sur mobile */
+    opacity: 1; /* La boîte modale sera toujours visible */
+    transform: translateX(-50%); /* Centre horizontalement sans déplacer verticalement */
+    top: auto;
+    bottom: 10px; /* Ajuste la position en bas */
+    z-index: 10;
+    gap: 10px;
+  }
+
+  .produit-b:hover .modal-produits-b {
+    opacity: 1; /* Assure que l'opacité reste 1 même sur le survol */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*VErsion mobile MOBIL*/
+/* Par défaut, cacher le menu filtres sur mobile */
+@media (max-width: 769px) {
+  .filtres {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .filtres.show {
+    display: block; /* Assurer que l'élément est affiché */
+    transform: translateX(0); /* Afficher le menu */
+  }
+
+  .filter-button {
+    display: flex;
+    margin-left: 0;
+  }
+
+  .produits-b {
+    flex: 1 1 calc(50% - 20px);
+  }
+
+  .img-b {
+    width: 100%;
+    height: 200px;
+  }
+  .close-menu {
+    display: block;
+  }
+  .close-b {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center; /* Centre les boutons horizontalement */
+  align-items: center; /* Aligne verticalement */
+  gap: 10px; /* Espace entre les boutons */
+  margin: 20px auto; /* Espace au-dessus et centrer horizontalement */
+  padding: 10px 0; /* Espace interne vertical */
+  width: 100%; /* Assure que le conteneur occupe toute la largeur disponible */
+  max-width: 1200px; /* Ajuste selon la largeur maximale souhaitée */
+}
+
+/* Boutons de pagination */
+.pagination-btn {
+  background-color: #ff4d4d; /* Couleur de fond rouge */
+  color: white; /* Texte blanc */
+  border: none; /* Pas de bordure */
+  border-radius: 6px; /* Coins arrondis */
+  padding: 8px 12px; /* Espacement interne */
+  cursor: pointer; /* Curseur pointeur */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animation */
+}
+
+.pagination-btn:hover {
+  background-color: #ff1a1a; /* Fond rouge plus foncé au survol */
+  transform: translateY(-2px); /* Léger déplacement vers le haut au survol */
+}
+
+/* Boutons désactivés */
+.pagination-btn:disabled {
+  background-color: #ccc; /* Fond gris pour les boutons désactivés */
+  cursor: not-allowed; /* Curseur interdit */
+}
+
+/* Informations sur la page */
+#page-info {
+  font-size: 16px; /* Taille de police */
+  font-weight: 600; /* Police en gras */
+  color: orangered; /* Couleur du texte */
+  margin: 0 10px; /* Espacement horizontal */
+  font-family: "Lobster Two", sans-serif; /* Style de police */
+}
+
+
+
+
+
+/*PRODUIT.HTML//////////////////////////////////////////////////////////////////////////////////*/
+/* CSS pour les produits détaillés */
+.produits-detaillesb {
+  display: flex;
+  flex-direction: column; /* Aligner les sections verticalement */
+  gap: 50px;
+  margin: 20px;
+}
+
+.produits-contenu {
+  display: flex;
+  gap: 60px;
+}
+
+.images-detailles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.img-principale img {
+  width: 700px; /* Ajustez la taille de l'image principale */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-dt {
+  display: flex;
+  gap: 10px;
+}
+
+.img-dt img {
+  width: 200px; /* Ajustez la taille des images de détail */
+  height: auto;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.img-dt img:hover {
+  border-color: #333; /* Couleur de la bordure au survol */
+}
+
+.descreption-p {
+  max-width: 600px; /* Limiter la largeur de la description */
+}
+
+.descreption-p h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.descreption-p ul {
+  list-style: none;
+  padding: 0;
+}
+
+.descreption-p li {
+  margin-bottom: 30px;
+}
+
+.color-squeer {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.color-squeer:hover {
+  background-color: #f0f0f0;
+}
+
+.taille-squeer {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.taille-squeer:hover {
+  background-color: #f0f0f0;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: orangered;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: coral;
+}
+
+.info {
+  display: block; /* Assure que l'info est en bloc */
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; /* Ajouter un espace au-dessus de la section info */
+}
+
+.info h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.info p {
+  margin-bottom: 10px;
+}
+
+.info select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+/* Style pour le sélecteur de couleur */
+/* Style pour les couleurs et tailles sélectionnées */
+.color-squeer.selected {
+    border: 2px solid red; /* Bordure pour indiquer la sélection */
+    box-shadow: 0 0 5px red; /* Ombre légère */
+}
+
+.taille-squeer.selected {
+    background-color: gray; /* Couleur de fond pour la taille sélectionnée */
+    border-radius: 4px;
+    padding: 5px;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+
+/* Styles pour version mobile */
+@media (max-width: 954px) {
+  .produits-contenu {
+    display: flex;
+    flex-direction: column; /* Passer en colonne sur mobile */
+    gap: 20px;
+  }
+
+  .img-principale img {
+    width: 100%; /* Adapter l'image principale à la largeur de l'écran */
+    max-width: 100%;
+    height: auto;
+  }
+
+  .img-dt {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .img-dt img {
+    width: 170px; /* Réduire la taille des images de détail */
+    height: auto;
+  }
+
+  .descreption-p {
+    max-width: 100%; /* Adapter la description à la largeur de l'écran */
+  }
+
+  .descreption-p h2 {
+    font-size: 24px; /* Réduire la taille de la police */
+    margin-bottom: 10px;
+  }
+
+  .descreption-p li {
+    margin-bottom: 15px;
+  }
+
+  .info {
+    margin-top: 20px; /* Espace au-dessus de la section info */
+    padding: 10px; /* Réduire les marges intérieures pour les écrans plus petits */
+  }
+
+  .info h2 {
+    font-size: 18px; /* Réduire la taille de la police */
+  }
+
+  button {
+    padding: 8px 12px; /* Réduire la taille des boutons */
+  }
+}
+
+/*CONTACT//////////////////////////////////////////////////////////////////////////////*/
+.contact {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  height: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.contact h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.contact .contact-item {
+  margin: 10px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex; /* Ajout pour flexbox */
+  justify-content: center; /* Centre horizontalement */
+}
+
+.contact .contact-item a {
+  text-decoration: none;
+  display: flex;
+  align-items: center; /* Centre verticalement */
+  justify-content: center; /* Centre horizontalement */
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* S'assure que le lien prend toute la largeur disponible */
+  max-width: 300px; /* Limite la largeur max */
+}
+
+.contact .contact-item a span {
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Animation pour hover */
+.contact .contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Styles spécifiques pour chaque plateforme */
+.contact-item.facebook a {
+  background-color: #3b5998;
+}
+
+.contact-item.instagram a {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+.contact-item.tiktok a {
+  background-color: #010101;
+}
+
+.contact-item.whatsapp a {
+  background-color: #25d366;
+}
+
+.contact-item.gmail a {
+  background-color: #d44638;
+}
+
+/* Ajout d'une légère animation */
+.contact .contact-item a:hover {
+  filter: brightness(1.1);
+}
+
+/*A PROPOS DE NOUS////////////////////////////////////////////////////////////////////////////////////////*/
+
+.propos-nous h1 {
+  font-family: "Lobster Two", cursive;
+  font-size: 3rem;
+  text-align: center;
+  margin: 20px 0;
+  color: #c0392b; /* Couleur chaude pour attirer l'attention */
+}
+
+propos-nous h3 {
+  font-family: "Arial", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #e74c3c; /* Teinte complémentaire pour le contraste */
+}
+
+.propo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.propo div {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: center;
+}
+
+.propo p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .propo {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .propo div {
+    max-width: 90%;
+  }
+}
+
+/*COMMANDER MAINTENANT/////////////////////////////////////////////////////////////////////////////////*/
+/* Container centré pour le formulaire */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alignement en haut pour éviter le dépassement */
+    min-height: 100vh; /* Utilisation de min-height pour s'adapter à la hauteur de l'écran */
+    padding: 20px; /* Ajout de padding pour éviter les chevauchements avec les bords */
+    background-color: #f4f4f9;
+    overflow: auto; /* Permettre le défilement si le formulaire est trop grand */
+    box-sizing: border-box;
+}
+
+/* Style de la section du formulaire */
+.section-form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px; /* Réduit la hauteur du padding pour ajuster le contenu */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh; /* Limite la hauteur pour éviter le débordement sur le footer */
+    overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Titre du formulaire */
+.section-form .title h1 {
+    font-size: 2rem;
+    color: darkblue;
+    margin-bottom: 20px;
+}
+
+/* Animation clignotante */
+ .section-form .blink {
+    animation: blink-animation 1.5s infinite;
+}
+
+@keyframes blink-animation {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Styles pour le formulaire */
+.styled-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input et Textarea du formulaire */
+.form-input, .form-textarea {
+    padding: 15px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    background: #f9f9fc;
+}
+
+.form-input:focus, .form-textarea:focus {
+    border-color: #7d5fff;
+    background: #fff;
+}
+
+/* Textarea */
+.form-textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* Bouton de soumission */
+.form-submit {
+    padding: 15px;
+    font-size: 1rem;
+    background: #7d5fff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-submit:hover {
+    background: #6848e0;
+}
+
+.form-submit:active {
+    background: #563fc7;
+}
+
+/* Styles pour les produits commandés */
+#ordered-products {
+    max-height: 150px; /* Limite la hauteur totale pour éviter le débordement */
+    overflow-y: auto; /* Permet un défilement si le contenu dépasse */
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9fc;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+#ordered-products li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#ordered-products img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+#ordered-products span {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Pour un rendu agréable, ajouter un espacement entre les produits et le reste du formulaire */
+.section-form h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/*WISHLIST***********************************************************************************************/
+/* Style général pour la section main */
+/* Style général pour la section main */
+main.wishlist-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f9f9f9; /* Couleur de fond douce pour le contraste */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
+}
+
+/* Style pour l'en-tête de la wishlist */
+.wishlist-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.wishlist-header h1 {
+    font-family: 'Lobster Two', cursive;
+    font-size: 36px;
+    color: #ff5722; /* Couleur principale du logo */
+    margin-bottom: 10px;
+}
+
+.wishlist-header p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Style pour les articles dans la wishlist */
+.wishlist-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Centrer les items */
+}
+
+/* Style pour chaque item de la wishlist */
+.wishlist-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: calc(33.333% - 20px); /* Trois items par ligne avec espace */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wishlist-item:hover {
+    transform: scale(1.03); /* Effet zoom au survol */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Accentuation de l'ombre */
+}
+
+/* Image du produit */
+.wishlist-item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0; /* Arrondi en haut seulement */
+}
+
+/* Détails du produit */
+.wishlist-item-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.wishlist-item-details h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.wishlist-item-details p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Bouton pour supprimer un article */
+.remove-btn {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #e64a19; /* Couleur légèrement plus sombre au survol */
+}
+
+/* Message lorsque la wishlist est vide */
+.empty-wishlist {
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #888;
+}
+
+.empty-wishlist p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.empty-wishlist .btn {
+    background-color: #ff9800;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.empty-wishlist .btn:hover {
+    background-color: #f57c00; /* Changement de couleur au survol */
+}
+/* Style pour le bouton de suppression */
+.remove-button {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+    background-color: #e64a19;
+}
+
