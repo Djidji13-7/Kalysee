@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--titre de la page -->
+    <title>Kaleesy's shop</title>
+    <!--connecter le html avec le fichier style -->
+    <link rel="stylesheet" href="style.css" />
+    <!--connecter le html avec le fichier font awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--icone de l'onglet-->
+    <link rel="icon" href="./logo.ico" type="image/x-icon">
+
+</head>
+
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////-->
+
+<body>
+    <!--barre de navigation (debut)-->
+    <div class="promo">
+        <span>Handmaid products </span>
+    </div>
+    <header class="header">
+        <nav class="nav container">
+            <div class="navigation d-flex">
+                <div class="icon1">
+                    <i class="bx bx-menu"></i>
+                </div>
+                <div class="logo">
+                    <a href="#"><span>K</span>aleesy</a>
+                </div>
+                <div class="menu">
+                    <div class="top">
+                        <span class="fermer">Fermer<i class="bx bx-x"></i></span>
+                    </div>
+                    <ul class="nav_list d-flex">
+                        <li class="nav-item">
+                            <a href="#1" class="nav-link">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#2" class="nav-link">Boutique</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#3" class="nav-link">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="openPropos">A propos de nous</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#5" class="nav-link"> Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="icons d-flex">
+                    <div><i class="bx bx-search"></i></div>
+                    <div><i class="bx bx-user"></i></div>
+                    <div><i class="bx bx-heart"></i></div>
+                    <div>
+                        <i class="bx bx-shopping-bag"></i>
+                        <span class="align-center">0</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- //////////////////////////////////////////////////////////////////////////////////////-->
+        <div class="banniere" id="banniere">
+            <div class="banniere-contenu d-flex container">
+                <div class="gauche">
+                    <span class="sous-titre"> VOTRE UNIQUE SHOP </span>
+                    <h1 class="titre">
+                        <span class="coleur"> 100% <br /></span> Handmaid products <br /> for all ages
+                    </h1>
+                    <h5>Commander avant la rupture</h5>
+                    <a href="#" class="btn acheter" id="acheter-maintenant"> Voir Produits</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- //////////////////////////////////////////////////////////////////////////////////////-->
+
+    <section class="section services">
+        <div class="service-center container">
+            <div class="service">
+                <span class="icon"><div><i class="bx bx-purchase-tag"></i></div></span>
+                <h4>Livraison 58 wilaya</h4>
+                <span class="text">Livraison gratuite pour 2 articles ou plus</span>
+            </div>
+            <div class="service">
+                <span class="icon"><div><i class="bx bx-lock"></i></div></span>
+                <h4>service paiement</h4>
+                <span class="text">Indisponible pour le moment</span>
+            </div>
+            <div class="service">
+                <span class="icon"><div><i class="bx bxs-left-arrow-circle"></i></div></span>
+                <h4>Retour</h4>
+                <span class="text">Produits garantis</span>
+            </div>
+            <div class="service">
+                <span class="icon"><div><i class="bx bx-headphone"></i></div></span>
+                <h4>Support 24/7</h4>
+                <span class="text">Assistance client</span>
+            </div>
+        </div>
+    </section>
+    <!-- //////////////////////////////////////////////////////////////////////////////////////-->
+
+    <section class="section" id="section-produits">
+        <div class="titre">
+            <h1><span>Nouvelles </span> arrivages</h1>
+        </div>
+        <div class="centre-produit container">
+            <div class="produit" onclick="showDetails('Jupe lumineuse', 'Couleur: Rose', 'Âge: Nouveau', 'Prix: 4800 Da', ['./Messenger/1.jpeg', './Messenger/12.jpeg', './Messenger/13.jpeg'])">
+<div class="img-cover">
+    <img src="./Messenger/1.jpeg" alt="image">
+</div>
+<p>Jupe lumineuse</p>
+<div class="rating">
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+</div>
+<div class="prix">4800 Da</div>
+
+<button class="voir-details" onclick="openModal(event, 'Jupe lumineuse', 'Âge: Nouveau', 'Couleur: Rose', 'Prix: 4800 Da', ['./Messenger/1.jpeg', './Messenger/12.jpeg', './Messenger/13.jpeg'])">Voir Détails</button>
+<button class="commander" onclick="scrollToForm(event)">Commander</button>
+</div>
+<div class="produit" onclick="showDetails('Sacauche', 'Couleur: beige', 'Âge: Nouveau', 'Prix: 1800 Da', ['./Messenger/2.jpg', './Messenger/21.jpeg', './Messenger/22.jpeg'])">
+<div class="img-cover">
+    <img src="./Messenger/2.jpg" alt="image">
+</div>
+<p>Sacauche</p>
+<div class="rating">
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+</div>
+<div class="prix">1800 Da</div>
+<div class="button-container">
+    <button class="voir-details" onclick="openModal(event, 'Sacauche', 'Âge: Nouveau', 'Couleur: Rouge', 'Prix: 4800 Da', ['./Messenger/2.jpg', './Messenger/21.jpeg', './Messenger/23.jpeg'])">Voir Détails</button>
+<button class="commander" onclick="scrollToForm(event)">Commander</button>
+</div>
+</div>
+<div class="produit" onclick="showDetails('Jupe ', 'Couleur: Blanche', 'Âge: Nouveau', 'Prix: 2800 Da', ['./Messenger/3.jpg', './Messenger/31.jpg', './Messenger/32.jpg'])">
+<div class="img-cover">
+    <img src="./Messenger/3.jpg" alt="image">
+</div>
+<p>Jupe</p>
+<div class="rating">
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+</div>
+<div class="prix">2800 Da</div>
+<div class="button-container">
+    <button class="voir-details" onclick="openModal(event, 'Jupe ', 'Âge: Nouveau', 'Couleur: Blanche', 'Prix: 4800 Da', ['./Messenger/3.jpg', './Messenger/31.jpg', './Messenger/32.jpg'])">Voir Détails</button>
+<button class="commander" onclick="scrollToForm(event)">Commander</button>
+</div>
+</div>
+<div class="produit" onclick="showDetails('Sac', 'Couleur: beige', 'Âge: Nouveau', 'Prix: 3800 Da', ['./Messenger/4.jpg', './Messenger/41.jpg', './Messenger/42.jpg'])">
+<div class="img-cover">
+    <img src="./Messenger/4.jpg" alt="image">
+</div>
+<p>Sac</p>
+<div class="rating">
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+</div>
+<div class="prix">3800 Da</div>
+<div class="button-container">
+    <button class="voir-details" onclick="openModal(event, 'Sac', 'Âge: Nouveau', 'Couleur: beige', 'Prix: 3800 Da', ['./Messenger/4.jpg', './Messenger/41.jpg', './Messenger/42.jpg'])">Voir Détails</button>
+<button class="commander" onclick="scrollToForm(event)">Commander</button>
+<Commander</button>
+    </div>
+    </div>
+    <div class="produit" onclick="showDetails('Sacauche', 'Couleur: beige', 'Âge: Nouveau', 'Prix: 1800 Da', ['./Messenger/5.jpg', './Messenger/51.jpg', './Messenger/52.jpg'])">
+<div class="img-cover">
+    <img src="./Messenger/5.jpg" alt="image">
+</div>
+<p>Sacauche</p>
+<div class="rating">
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+</div>
+<div class="prix">1800 Da</div>
+<button class="voir-details" onclick="openModal(event, 'Jupe lumineuse', 'Âge: Nouveau', 'Couleur: Rouge', 'Prix: 4800 Da', ['./Messenger/5.jpg', './Messenger/51.jpg', './Messenger/52.jpg'])">Voir Détails</button>
+<button class="commander" onclick="scrollToForm(event)">Commander</button>
+</div>
+<div class="produit" onclick="showDetails('Pule', 'Couleur: Bleu', 'Âge: Nouveau', 'Prix: 3800 Da', ['./Messenger/6.jpg', './Messenger/61.jpg', './Messenger/62.jpg'])">
+<div class="img-cover">
+    <img src="./Messenger/6.jpg" alt="image">
+</div>
+<p>Pule</p>
+<div class="rating">
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+</div>
+<div class="prix">3800 Da</div>
+<button class="voir-details" onclick="openModal(event, 'Pule', 'Âge: Nouveau', 'Couleur: Rouge', 'Prix: 3800 Da', ['./Messenger/6.jpg', './Messenger/61.jpg', './Messenger/62.jpg'])">Voir Détails</button>
+<button class="commander" onclick="scrollToForm(event)">Commander</button>
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-age"></p>
+        <p id="modal-description"></p>
+        <p id="modal-price"></p>
+        <div id="modal-images"></div>
+        <button class="commander" onclick="scrollToForm(event)">Commander</button>
+</div>
+</div>
+</section>
+<!-- //////////////////////////////////////////////////////////////////////////////////////-->
+
+
+<section class="section">
+    <div class="titre">
+        <h1><span>Produits par </span> Catégories</h1>
+    </div>
+    <div class="categorie container">
+        <div class="article art1">
+            <img src="./Messenger/1.jpeg" alt="">
+        </div>
+        <div class="article art2">
+            <img src="./Messenger/2.jpg" alt="">
+        </div>
+        <div class="article art3">
+            <img src="./Messenger/3.jpg" alt="">
+        </div>
+        <div class="article art4">
+            <img src="./Messenger/6.jpg" alt="">
+        </div>
+    </div>
+</section>
+<!-- //////////////////////////////////////////////////////////////////////////////////////-->
+
+
+<!--formulaire-->
+<section class="section-form" id="section-form">
+    <div class="title">
+        <h1 class="blink">Commander maintenant!</h1>
+    </div>
+    <?php include('./mail.php');?>
+    <form action="mail.php" method="POST">
+        <input type="text" name="familyname" placeholder="nom" id="familyname">
+        <input type="text" name="name" placeholder="prénom" id="name">
+        <!--<select id="Pname">
+            <option value="" disabled selected>Nom du produit</option>
+            <option value="1">Jupe lumineuse</option>
+            <option value="2">Sacauche</option>
+            <option value="3">Sac</option>
+            <option value="4">Robe</option>
+          </select>
+        <input type="text" placeholder="numéru de tétéphone" id="num">-->
+        <textarea name="message" placeholder="Adresse" id="message"></textarea>
+        <input type="submit" name="submit" value="Envoyer">
+        <a href="#contact" id="openContact">Contacter Nous!</a>
+    </form>
+</section>
+<!-- //////////////////////////////////////////////////////////////////////////////////////-->
+<section class="contact">
+    <div class="contact-center">
+        <span class="close-modal" style="float:right;cursor:pointer;">&times;</span>
+<h3>CONTACTEZ NOUS</h3>
+<div>
+    <a href="https://www.facebook.com" target="_blank">
+        <span><i class="fa-brands fa-facebook"></i> Facebook</span>
+    </a>
+</div>
+<div>
+    <a href="https://www.instagram.com" target="_blank">
+        <span><i class="fa-brands fa-instagram"></i> Instagram</span>
+    </a>
+</div>
+<div>
+    <a href="https://www.tiktok.com" target="_blank">
+        <span><i class="fa-brands fa-tiktok"></i> TikTok</span>
+    </a>
+</div>
+<div>
+    <a href="tel:+0615858554">
+        <span><i class="fa-solid fa-phone"></i> WhatsApp</span>
+    </a>
+</div>
+<div>
+    <a href="mailto:kalyseesshop@gmail.com">
+        <span><i class="fa-solid fa-envelope"></i> Gmail</span>
+    </a>
+</div>
+</div>
+</section>
+<!--////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--Apropos de nous-->
+<section class="propos-nous" id="proposModal" style="display: none;">
+<div class="propos-center">
+    <span class="close-propos">&times;</span>
+    <div>
+        <h2>À Propos de Nous</h2>
+        </br>
+
+        <h3>Qui sommes-nous ?</h3>
+        <p>Nous sommes [Nom de l'entreprise], une entreprise spécialisée dans [activité principale]. Depuis notre création en
+            [année], notre mission est de [objectif principal], tout en promouvant des valeurs telles que [valeurs fondamentales].
+        </p>
+    </div>
+    <div>
+        <h3> Notre Histoire</h3>
+        <p>Fondée par [nom du/des fondateur(s)], notre aventure a commencé avec [racontez l'idée de départ]. Aujourd'hui, nous
+            sommes fiers d'être [décrivez votre situation actuelle].</p>
+    </div>
+    <div>
+        <h3> Nos Valeurs</h3>
+        <p>Innovation, qualité et [autres valeurs clés] sont au cœur de tout ce que nous faisons. Nous croyons que [expliquez
+            en quoi ces valeurs sont importantes pour vous et vos clients].</p>
+    </div>
+    <div>
+        <h3>Notre Équipe</h3>
+        <p> Nous sommes une équipe de [description brève de l'équipe]. Chaque jour, nous travaillons ensemble pour [décrivez
+            ce que vous faites].</p>
+    </div>
+    <div>
+        <h3>Rejoignez-nous</h3>
+        <p>Explorez nos [produits/services] ou contactez-nous pour en savoir plus. Nous serions ravis de vous compter parmi
+            nos clients fidèles.</p>
+    </div>
+</div>
+</section>
+<!--///////////////////////////////////////////////////////////////////////////-->
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-center">
+                <h3>Entreprise</h3>
+                <a href="#marque" class="footer-link">Marque</a>
+                <a href="#cp" class="footer-link">Code Promo</a>
+                <a href="#os" class="footer-link">Offre Spéciale</a>
+                <a href="#cs" class="footer-link">Carte du Site</a>
+            </div>
+            <div class="footer-center">
+                <h3>INFORMATION</h3>
+                <a href="#pn" class="footer-link">A propos de Nous</a>
+                <a href="#tc" class="footer-link">Terms & Conditions</a>
+                <a href="#cn" class="footer-link">Contacte Nous </a>
+                <a href="#ne" class="footer-link">Notre Equipe</a>
+            </div>
+            <div class="footer-center">
+                <h3>CONTACTE NOUS</h3>
+                <div>
+                    <span><i class="fa-solid fa-location-dot"></i></span> Sétif
+                </div>
+                <div>
+                    <span><i class="fa-solid fa-envelope"></i></span> kalyseesshop@gmail.com
+                </div>
+                <div>
+                    <span><i class="fa-solid fa-phone"></i></span> 0615858554
+                </div>
+                <div>
+                    <span><i class="fa-solid fa-paper-plane"></i></span> Algérie
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2024 Tous droits réservés
+        <a href="#">Algérie</a>
+    </div>
+</footer>
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////-->
+<script type="text/javascript" src="./script.js"></script>
+</body>
+
+</html>
